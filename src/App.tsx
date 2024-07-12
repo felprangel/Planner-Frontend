@@ -65,7 +65,7 @@ export function App() {
 								<UserRoundPlus className="size-5 text-zinc-400" />
 								<input
 									type="text"
-									placeholder="Quem estará na viagem??"
+									placeholder="Quem estará na viagem?"
 									className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
 								/>
 							</div>
