@@ -24,6 +24,10 @@ export function App() {
 		setIsGuestsModalOpen(true)
 	}
 
+	function closeGuestsModal() {
+		setIsGuestsModalOpen(false)
+	}
+
 	return (
 		<div className="h-screen flex items-center justify-center bg-pattern bg-no-repeat bg-center">
 			<div className="max-w-3xl w-full px-6 text-center space-y-10">
@@ -115,7 +119,7 @@ export function App() {
 					<div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900">
 						<div className="flex items-center justify-between">
 							<h2>Selecionar convidados</h2>
-							<button type="button">
+							<button onClick={closeGuestsModal} type="button">
 								<X className="size-5 text-zinc-400" />
 							</button>
 						</div>
