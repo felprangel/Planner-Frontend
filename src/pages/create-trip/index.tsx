@@ -64,7 +64,8 @@ export function CreateTripPage() {
 		setEmailsToInvite(newEmailList)
 	}
 
-	function createTrip() {
+	function createTrip(event: FormEvent<HTMLFormElement>) {
+		event.preventDefault()
 		Navigate('/trips/123')
 	}
 
