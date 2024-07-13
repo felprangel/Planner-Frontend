@@ -47,7 +47,9 @@ export function App() {
 	}
 
 	function removeEmail(emailToRemove: string) {
-		const newEmailList = emailsToInvite.filter(email => email !== emailToRemove)
+		const newEmailList = emailsToInvite.filter(
+			(email) => email !== emailToRemove
+		)
 
 		setEmailsToInvite(newEmailList)
 	}
