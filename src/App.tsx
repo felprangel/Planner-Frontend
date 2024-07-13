@@ -257,7 +257,7 @@ export function App() {
 							type="submit"
 							className="bg-lime-300 text-lime-950 w-full justify-center rounded-lg px-5 h-11 font-medium flex items-center gap-2 hover:bg-lime-400"
 						>
-							Convidar <Plus className="size-5" />
+							Confirmar criação da viagem
 						</button>
 					</form>
 				</div>
