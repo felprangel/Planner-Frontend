@@ -14,6 +14,7 @@ import { FormEvent, useState } from 'react'
 export function App() {
 	const [isGuestsInputOpen, setIsGuestsInputOpen] = useState(false)
 	const [isGuestsModalOpen, setIsGuestsModalOpen] = useState(false)
+	const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
 	const [emailsToInvite, setEmailsToInvite] = useState<string[]>([])
 
 	function openGuestsInput() {
@@ -30,6 +31,14 @@ export function App() {
 
 	function closeGuestsModal() {
 		setIsGuestsModalOpen(false)
+	}
+
+	function openConfirmTripModal() {
+		setIsConfirmModalOpen(true)
+	}
+
+	function closeConfirmTripModal() {
+		setIsConfirmModalOpen(false)
 	}
 
 	function addNewEmail(event: FormEvent<HTMLFormElement>) {
@@ -120,7 +129,7 @@ export function App() {
 
 							<div className="w-px h-6 bg-zinc-800" />
 
-							<button className="bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400">
+							<button onClick={openConfirmTripModal} className="bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400">
 								Confirmar viagem <ArrowRight className="size-5" />
 							</button>
 						</div>
@@ -198,14 +207,15 @@ export function App() {
 				</div>
 			)}
 
-			<div className="fixed inset-0 bg-black/60 flex items-center justify-center">
+			{isConfirmModalOpen && (
+				<div className="fixed inset-0 bg-black/60 flex items-center justify-center">
 				<div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
 					<div className="space-y-2">
 						<div className="flex items-center justify-between">
 							<h2 className="text-lg font-semibold">
 								Confirmar criação de viagem
 							</h2>
-							<button onClick={closeGuestsModal} type="button">
+							<button onClick={closeConfirmTripModal} type="button">
 								<X className="size-5 text-zinc-400" />
 							</button>
 						</div>
@@ -252,6 +262,7 @@ export function App() {
 					</form>
 				</div>
 			</div>
+			)}
 		</div>
 	)
 }
