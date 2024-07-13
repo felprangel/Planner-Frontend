@@ -14,6 +14,10 @@ export function App() {
 		setIsGuestsInputOpen(true)
 	}
 
+	function closeGuestsInput() {
+		setIsGuestsInputOpen(false)
+	}
+
 	return (
 		<div className="h-screen flex items-center justify-center bg-pattern bg-no-repeat bg-center">
 			<div className="max-w-3xl w-full px-6 text-center space-y-10">
@@ -48,7 +52,10 @@ export function App() {
 						<div className="w-px h-6 bg-zinc-800" />
 
 						{isGuestsInputOpen ? (
-							<button className="bg-zinc-800 text-zinc-200 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-zinc-700">
+							<button
+								onClick={closeGuestsInput}
+								className="bg-zinc-800 text-zinc-200 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-zinc-700"
+							>
 								Alterar local/data <Settings2 className="size-5" />
 							</button>
 						) : (
