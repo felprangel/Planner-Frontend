@@ -35,9 +35,11 @@ export function App() {
 		event.preventDefault()
 
 		const data = new FormData(event.currentTarget)
-		const email = data.get('email')
+		const email = data.get('email')?.toString()
 
-		setEmailsToInvite([...emailsToInvite, email as string])
+		if (!email) return
+
+		setEmailsToInvite([...emailsToInvite, email])
 	}
 
 	return (
