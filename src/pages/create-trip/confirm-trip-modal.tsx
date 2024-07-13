@@ -1,8 +1,9 @@
 import { User, X } from 'lucide-react'
+import { FormEvent } from 'react'
 
 interface ConfirmTripModalProps {
 	closeConfirmTripModal: () => void
-	createTrip: () => void
+	createTrip: (event: FormEvent<HTMLFormElement>) => void
 }
 
 export function ConfirmTripModal(props: ConfirmTripModalProps) {
@@ -29,7 +30,7 @@ export function ConfirmTripModal(props: ConfirmTripModalProps) {
 					</p>
 				</div>
 
-				<form className="space-y-3">
+				<form onSubmit={props.createTrip} className="space-y-3">
 					<div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
 						<User className="text-zinc-400 size-5" />
 						<input
@@ -51,8 +52,7 @@ export function ConfirmTripModal(props: ConfirmTripModalProps) {
 					</div>
 
 					<button
-						onClick={props.createTrip}
-						type="button"
+						type="submit"
 						className="bg-lime-300 text-lime-950 w-full justify-center rounded-lg px-5 h-11 font-medium flex items-center gap-2 hover:bg-lime-400"
 					>
 						Confirmar criação da viagem
