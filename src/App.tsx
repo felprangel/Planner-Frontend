@@ -40,6 +40,8 @@ export function App() {
 		if (!email) return
 
 		setEmailsToInvite([...emailsToInvite, email])
+
+		event.currentTarget.reset()
 	}
 
 	return (
