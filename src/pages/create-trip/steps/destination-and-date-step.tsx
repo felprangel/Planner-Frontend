@@ -1,7 +1,7 @@
 import { ArrowRight, Calendar, MapPin, Settings2, X } from 'lucide-react'
 import { Button } from '../../../components/button'
 import { useState } from 'react'
-import { DayPicker } from 'react-day-picker'
+import { DateRange, DayPicker } from 'react-day-picker'
 import 'react-day-picker/dist/style.css'
 
 interface DestinationAndDateStepProps {
@@ -12,6 +12,7 @@ interface DestinationAndDateStepProps {
 
 export function DestinationAndDateStep(props: DestinationAndDateStepProps) {
 	const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
+	const [eventStartAndEndDate, setEventStartAndEndDate] = useState<DateRange | undefined>()
 
 	function openDatePicker() {
 		setIsDatePickerOpen(true)
@@ -53,7 +54,7 @@ export function DestinationAndDateStep(props: DestinationAndDateStepProps) {
 							</div>
 						</div>
 
-						<DayPicker mode="range" />
+						<DayPicker mode="range" selected={eventStartAndEndDate} onSelect={setEventStartAndEndDate} />
 					</div>
 				</div>
 			)}
