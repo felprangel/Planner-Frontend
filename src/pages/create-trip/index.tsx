@@ -89,7 +89,7 @@ export function CreateTripPage() {
 			owner_email: ownerEmail,
 		})
 
-		Navigate(`/trips/${response.data.tripId}`)
+		Navigate(`/trips/${response.data.TripId}`)
 	}
 
 	return (
