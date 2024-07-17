@@ -2,6 +2,7 @@ import { ArrowRight, Calendar, MapPin, Settings2, X } from 'lucide-react'
 import { Button } from '../../../components/button'
 import { useState } from 'react'
 import { DateRange, DayPicker } from 'react-day-picker'
+import { format } from 'date-fns'
 import 'react-day-picker/dist/style.css'
 
 interface DestinationAndDateStepProps {
@@ -12,7 +13,15 @@ interface DestinationAndDateStepProps {
 
 export function DestinationAndDateStep(props: DestinationAndDateStepProps) {
 	const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
-	const [eventStartAndEndDate, setEventStartAndEndDate] = useState<DateRange | undefined>()
+	const [eventStartAndEndDate, setEventStartAndEndDate] = useState<
+		DateRange | undefined
+	>()
+	const displayedDate =
+		eventStartAndEndDate && eventStartAndEndDate.from && eventStartAndEndDate.to
+			? format(eventStartAndEndDate.from, "d' de ' LLL")
+					.concat(' até ')
+					.concat(format(eventStartAndEndDate.to, "d' de ' LLL"))
+			: null
 
 	function openDatePicker() {
 		setIsDatePickerOpen(true)
@@ -39,7 +48,9 @@ export function DestinationAndDateStep(props: DestinationAndDateStepProps) {
 				className="flex items-center gap-2 text-left"
 			>
 				<Calendar className="size-5 text-zinc-400" />
-				<span className="text-lg text-zinc-400 w-40">Quando?</span>
+				<span className="text-lg text-zinc-400 w-40">
+					{displayedDate || 'Quando'}
+				</span>
 			</button>
 
 			{isDatePickerOpen && (
@@ -54,7 +65,11 @@ export function DestinationAndDateStep(props: DestinationAndDateStepProps) {
 							</div>
 						</div>
 
-						<DayPicker mode="range" selected={eventStartAndEndDate} onSelect={setEventStartAndEndDate} />
+						<DayPicker
+							mode="range"
+							selected={eventStartAndEndDate}
+							onSelect={setEventStartAndEndDate}
+						/>
 					</div>
 				</div>
 			)}
