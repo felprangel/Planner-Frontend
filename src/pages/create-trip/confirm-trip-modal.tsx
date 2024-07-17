@@ -1,10 +1,15 @@
 import { User, X } from 'lucide-react'
 import { FormEvent } from 'react'
 import { Button } from '../../components/button'
+import { DateRange } from 'react-day-picker'
 
 interface ConfirmTripModalProps {
 	closeConfirmTripModal: () => void
 	createTrip: (event: FormEvent<HTMLFormElement>) => void
+	setOwnerName: (name: string) => void
+	setOwnerEmail: (email: string) => void
+	tripDestination: string
+	eventStartAndEndDate: DateRange | undefined
 }
 
 export function ConfirmTripModal(props: ConfirmTripModalProps) {
@@ -22,10 +27,10 @@ export function ConfirmTripModal(props: ConfirmTripModalProps) {
 					</div>
 					<p className="text-sm text-zinc-400">
 						Para concluir a criação da viagem para{' '}
-						<b className="font-semibold text-zinc-100">Florianópolis, Brasil</b>{' '}
+						<b className="font-semibold text-zinc-100">{props.tripDestination}</b>{' '}
 						nas datas de{' '}
 						<b className="font-semibold text-zinc-100">
-							16 a 27 de Agosto de 2024
+							{props.eventStartAndEndDate? props.eventStartAndEndDate.toString() : ''}
 						</b>{' '}
 						preencha seus dados abaixo:
 					</p>
@@ -39,6 +44,7 @@ export function ConfirmTripModal(props: ConfirmTripModalProps) {
 							name="name"
 							placeholder="Seu nome completo"
 							className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+							onChange={(event) => props.setOwnerName(event.target.value)}
 						/>
 					</div>
 
@@ -49,6 +55,7 @@ export function ConfirmTripModal(props: ConfirmTripModalProps) {
 							name="email"
 							placeholder="Seu e-mail pessoal"
 							className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+							onChange={(event) => props.setOwnerEmail(event.target.value)}
 						/>
 					</div>
 
