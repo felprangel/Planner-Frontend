@@ -45,10 +45,10 @@ export function DestinationAndDateStep(props: DestinationAndDateStepProps) {
 			<button
 				disabled={props.isGuestsInputOpen}
 				onClick={openDatePicker}
-				className="flex items-center gap-2 text-left"
+				className="flex items-center gap-2 text-left w-[240px]"
 			>
 				<Calendar className="size-5 text-zinc-400" />
-				<span className="text-lg text-zinc-400 w-40">
+				<span className="text-lg text-zinc-400 w-40 flex-1">
 					{displayedDate || 'Quando'}
 				</span>
 			</button>
