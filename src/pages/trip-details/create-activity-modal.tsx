@@ -19,7 +19,7 @@ export function CreateActivityModal(props: CreateActivityModalProps) {
 		const title = data.get('title')?.toString()
 		const occours_at = data.get('occours-at')?.toString()
 
-		await api.post(`trip/${tripId}/activities`, {
+		await api.post(`trips/${tripId}/activities`, {
 			title,
 			occours_at,
 		})
